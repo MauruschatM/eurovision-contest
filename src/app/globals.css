@@ -1,26 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Mode - Glassmorphism Base */
+  --background-start-rgb: 230, 235, 240; /* Helles, leicht bläuliches Grau */
+  --background-end-rgb: 210, 215, 220; /* Etwas dunkleres Grau für den Gradienten */
+  --foreground-rgb: 15, 23, 42; /* Dunkles Schiefergrau für Text, gute Lesbarkeit */
+
+  --glass-bg: rgba(
+    255,
+    255,
+    255,
+    0.6
+  ); /* Heller, transparenter Hintergrund für Glaselemente */
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --neon-pink: #ff00ff;
+  --neon-blue: #00ffff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background-start-rgb: var(--background-start-rgb);
+  --color-background-end-rgb: var(--background-end-rgb);
+  --color-foreground-rgb: var(--foreground-rgb);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+/* Dark Mode - kann später angepasst oder entfernt werden */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background-start-rgb: 10, 10, 15;
+    --background-end-rgb: 20, 20, 25;
+    --foreground-rgb: 225, 235, 245;
+    --glass-bg: rgba(30, 30, 40, 0.6);
+    --glass-border: rgba(50, 50, 60, 0.8);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  /* Verlaufshintergrund für einen subtilen Effekt */
+  background: linear-gradient(
+    to bottom right,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  color: rgb(var(--foreground-rgb));
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh; /* Sicherstellen, dass der Hintergrund die gesamte Höhe einnimmt */
 }
