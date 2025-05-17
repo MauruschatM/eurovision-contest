@@ -118,7 +118,7 @@ export const CountryList: React.FC<CountryListProps> = ({
                   )}
                   {country.song && (
                     <span className="italic block md:inline">
-                      "{country.song}"
+                      &quot;{country.song}&quot;
                     </span>
                   )}
                 </div>
